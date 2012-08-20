@@ -16,6 +16,6 @@ A more developer-friendly way of working with AdMarvel banners and interstitials
 
 ## Requirements
 * An AdMarvel site id and partner id
-* [RemoteConfig](https://github.com/gangverk/RemoteConfig)
+* [RemoteConfig](https://github.com/gangverk/RemoteConfig) (or edit AdController.m and remove `[Config config].adMarvelSiteId` and `[Config config].adMarvelPartnerId`)
 * ARC
 * Xcode 4.4
