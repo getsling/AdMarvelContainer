@@ -29,7 +29,7 @@
         self.siteId = [Config config].adMarvelSiteId;
     }
     NSLog(@"Getting ad for site id %@", self.siteId);
-	[self.adMarvelView getAdWithNotification];
+    [self.adMarvelView getAdWithNotification];
 }
 
 - (void)openInterstitialWithClosedBlock:(InterstitialClosedBlock)closedBlock {
@@ -37,7 +37,7 @@
     if (!self.siteId) {
         self.siteId = [Config config].adMarvelSiteId;
     }
-	[self.adMarvelView getInterstitialAd];
+    [self.adMarvelView getInterstitialAd];
 }
 
 - (void)refreshAd {
@@ -56,7 +56,7 @@
 }
 
 - (BOOL)testingEnabled {
-#if defined (CONFIGURATION_Debug)
+#if defined (DEBUG)
     return YES;
 #endif
     return NO;
