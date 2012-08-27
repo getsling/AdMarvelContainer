@@ -65,9 +65,7 @@
 }
 
 - (void)refreshAd {
-    if (!self.hidden) {
-        [self.adController refreshAd];
-    }
+    [self.adController refreshAd];
 }
 
 - (void)openAd {
@@ -77,10 +75,6 @@
     }
 }
 
-- (void)openAndRefreshAd {
-    [self openAd];
-    [self refreshAd];
-}
 
 - (void)closeAd {
     self.hidden = YES;

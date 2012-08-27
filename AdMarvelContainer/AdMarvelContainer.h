@@ -28,7 +28,6 @@
 @property (nonatomic) NSInteger adHeight;
 
 - (void)refreshAd;
-- (void)openAndRefreshAd;
 - (void)openAd;
 - (void)closeAd;
 
