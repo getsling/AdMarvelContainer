@@ -6,7 +6,6 @@
 //
 
 #import "AdMarvelContainer.h"
-#import "AdMarvelView.h"
 #import "AdController.h"
 
 #define PADDING_TOP 10
