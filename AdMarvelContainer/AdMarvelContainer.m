@@ -28,6 +28,13 @@
 - (void)setDelegate:(id<AdMarvelContainerDelegate>)delegate {
     _delegate = delegate;
 
+    if ([_delegate respondsToSelector:@selector(adMarvelEnabled)]) {
+        BOOL enabled = [_delegate adMarvelEnabled];
+        if (!enabled) {
+            return;
+        }
+    }
+
     if ([_delegate respondsToSelector:@selector(adMarvelSiteId)]) {
         self.adController.siteId = [_delegate adMarvelSiteId];
     }
@@ -40,13 +47,13 @@
         [self addSubview:adMarvelView];
 
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        closeButton.frame = CGRectMake(280, 0, 40, 40);
+        closeButton.frame = CGRectMake(self.frame.size.width-40, 0, 40, 40);
         [closeButton setImage:[UIImage imageNamed:@"b_ad_close"] forState:UIControlStateNormal];
         [closeButton setContentEdgeInsets:UIEdgeInsetsMake(0, 12, 12, 0)];
         [closeButton addTarget:self action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:closeButton];
 
-        [self openAd];
+        [self openAd:adMarvelView];
     }];
 }
 
@@ -68,18 +75,17 @@
     [self.adController refreshAd];
 }
 
-- (void)openAd {
+- (void)openAd:(AdMarvelView *)adMarvelView {
     self.hidden = NO;
-    if ([self.delegate respondsToSelector:@selector(adMarvelContainerOpened)]) {
-        [self.delegate adMarvelContainerOpened];
+    if ([self.delegate respondsToSelector:@selector(adMarvelContainerOpened:adMarvelView:)]) {
+        [self.delegate adMarvelContainerOpened:self adMarvelView:adMarvelView];
     }
 }
 
-
 - (void)closeAd {
     self.hidden = YES;
-    if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed)]) {
-        [self.delegate adMarvelContainerClosed];
+    if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed:)]) {
+        [self.delegate adMarvelContainerClosed:self];
     }
 }
 

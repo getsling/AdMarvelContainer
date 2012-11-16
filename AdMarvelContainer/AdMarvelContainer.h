@@ -13,10 +13,11 @@
 @protocol AdMarvelContainerDelegate <NSObject>
 
 @required
-- (void)adMarvelContainerOpened;
-- (void)adMarvelContainerClosed;
+- (void)adMarvelContainerOpened:(AdMarvelContainer *)adMarvelContainer adMarvelView(adMarvelView *)adMarcelView;
+- (void)adMarvelContainerClosed:(AdMarvelContainer *)adMarvelContainer;
 
 @optional
+- (BOOL)adMarvelEnabled;
 - (NSString *)adMarvelSiteId;
 
 @end
