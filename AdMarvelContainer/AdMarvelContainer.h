@@ -7,13 +7,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class AdMarvelView;
+@class AdMarvelView, AdMarvelContainer;
 
 
 @protocol AdMarvelContainerDelegate <NSObject>
 
 @required
-- (void)adMarvelContainerOpened:(AdMarvelContainer *)adMarvelContainer adMarvelView(adMarvelView *)adMarcelView;
+- (void)adMarvelContainerOpened:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarcelView;
 - (void)adMarvelContainerClosed:(AdMarvelContainer *)adMarvelContainer;
 
 @optional
