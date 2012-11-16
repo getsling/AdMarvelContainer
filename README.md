@@ -9,11 +9,11 @@ The height of the AdMarvelContainer has to be 10 points more then your AdMarvel 
 
 ## Example delegate
 ```objective-c
-- (void)adMarvelContainerOpened {
-	[self.tableView setContentInset:UIEdgeInsetsMake(0, 0, self.adMarvelContainer.adHeight, 0)];
+- (void)adMarvelContainerOpened:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarvelView {
+	[self.tableView setContentInset:UIEdgeInsetsMake(0, 0, adMarvelView.frame.size.height, 0)];
 }
 
-- (void)adMarvelContainerClosed {
+- (void)adMarvelContainerClosed:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarvelView {
     [self.tableView setContentInset:UIEdgeInsetsZero];
 }
 ```

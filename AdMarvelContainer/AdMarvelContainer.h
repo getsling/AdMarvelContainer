@@ -25,7 +25,6 @@
 @interface AdMarvelContainer : UIView
 
 @property (strong, nonatomic) IBOutlet id <AdMarvelContainerDelegate> delegate;
-@property (nonatomic) NSInteger adHeight;
 
 - (void)refreshAd;
 - (void)openAd;

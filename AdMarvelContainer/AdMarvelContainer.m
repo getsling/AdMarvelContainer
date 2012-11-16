@@ -41,10 +41,15 @@
 
     [self.adController getAdWithSuccessBlock:^(AdMarvelView *adMarvelView) {
         self.adMarvelView = adMarvelView;
-        self.adHeight = adMarvelView.height;
-        self.height = self.adHeight + PADDING_TOP;
 
-        adMarvelView.y = PADDING_TOP;
+        CGRect newContainerFrame = self.frame;
+        newContainerFrame.size.height = adMarvelView.frame.size.height + PADDING_TOP;
+        self.frame = newContainerFrame;
+
+        CGRect newAdMarvelViewFrame = adMarvelView.frame;
+        newAdMarvelViewFrame.origin.y = PADDING_TOP;
+        adMarvelView.frame = newAdMarvelViewFrame;
+
         [self addSubview:adMarvelView];
 
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
