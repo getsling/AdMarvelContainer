@@ -12,6 +12,7 @@
 
 @interface AdMarvelContainer ()
 @property (strong, nonatomic) AdController *adController;
+@property (strong, nonatomic) AdMarvelView *adMarvelView;
 @end
 
 @implementation AdMarvelContainer
@@ -39,6 +40,7 @@
     }
 
     [self.adController getAdWithSuccessBlock:^(AdMarvelView *adMarvelView) {
+        self.adMarvelView = adMarvelView;
         self.adHeight = adMarvelView.height;
         self.height = self.adHeight + PADDING_TOP;
 
@@ -52,7 +54,7 @@
         [closeButton addTarget:self action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:closeButton];
 
-        [self openAd:adMarvelView];
+        [self openAd];
     }];
 }
 
@@ -74,17 +76,17 @@
     [self.adController refreshAd];
 }
 
-- (void)openAd:(AdMarvelView *)adMarvelView {
+- (void)openAd {
     self.hidden = NO;
     if ([self.delegate respondsToSelector:@selector(adMarvelContainerOpened:adMarvelView:)]) {
-        [self.delegate adMarvelContainerOpened:self adMarvelView:adMarvelView];
+        [self.delegate adMarvelContainerOpened:self adMarvelView:self.adMarvelView];
     }
 }
 
 - (void)closeAd {
     self.hidden = YES;
     if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed:)]) {
-        [self.delegate adMarvelContainerClosed:self];
+        [self.delegate adMarvelContainerClosed:self adMarvelView:self.adMarvelView];
     }
 }
 

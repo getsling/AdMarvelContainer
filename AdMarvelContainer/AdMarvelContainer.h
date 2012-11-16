@@ -13,7 +13,7 @@
 
 @required
 - (void)adMarvelContainerOpened:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarvelView;
-- (void)adMarvelContainerClosed:(AdMarvelContainer *)adMarvelContainer;
+- (void)adMarvelContainerClosed:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarvelView;
 
 @optional
 - (BOOL)adMarvelEnabled;
