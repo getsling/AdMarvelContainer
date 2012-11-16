@@ -90,7 +90,7 @@
 
 - (void)closeAd {
     self.hidden = YES;
-    if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed:)]) {
+    if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed:adMarvelView:)]) {
         [self.delegate adMarvelContainerClosed:self adMarvelView:self.adMarvelView];
     }
 }
