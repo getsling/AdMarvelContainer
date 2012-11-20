@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) IBOutlet id <AdMarvelContainerDelegate> delegate;
 
+- (BOOL)enabled;
 - (void)refreshAd;
 - (void)openAd;
 - (void)closeAd;

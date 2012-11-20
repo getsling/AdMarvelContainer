@@ -28,13 +28,6 @@
 - (void)setDelegate:(id<AdMarvelContainerDelegate>)delegate {
     _delegate = delegate;
 
-    if ([_delegate respondsToSelector:@selector(adMarvelEnabled)]) {
-        BOOL enabled = [_delegate adMarvelEnabled];
-        if (!enabled) {
-            return;
-        }
-    }
-
     if ([_delegate respondsToSelector:@selector(adMarvelSiteId)]) {
         self.adController.siteId = [_delegate adMarvelSiteId];
     }
@@ -77,21 +70,42 @@
     self.adController = [[AdController alloc] init];
 }
 
+- (BOOL)enabled {
+    BOOL enabled = YES;
+    if ([self.delegate respondsToSelector:@selector(adMarvelEnabled)]) {
+        enabled = [self.delegate adMarvelEnabled];
+    }
+    return enabled;
+}
+
 - (void)refreshAd {
     [self.adController refreshAd];
 }
 
 - (void)openAd {
-    self.hidden = NO;
-    if ([self.delegate respondsToSelector:@selector(adMarvelContainerOpened:adMarvelView:)]) {
-        [self.delegate adMarvelContainerOpened:self adMarvelView:self.adMarvelView];
+    if (!self.adMarvelView) {
+        return;
+    }
+
+    if (![self enabled]) {
+        [self closeAd];
+        return;
+    }
+
+    if (self.hidden) {
+        self.hidden = NO;
+        if ([self.delegate respondsToSelector:@selector(adMarvelContainerOpened:adMarvelView:)]) {
+            [self.delegate adMarvelContainerOpened:self adMarvelView:self.adMarvelView];
+        }
     }
 }
 
 - (void)closeAd {
-    self.hidden = YES;
-    if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed:adMarvelView:)]) {
-        [self.delegate adMarvelContainerClosed:self adMarvelView:self.adMarvelView];
+    if (!self.hidden) {
+        self.hidden = YES;
+        if ([self.delegate respondsToSelector:@selector(adMarvelContainerClosed:adMarvelView:)]) {
+            [self.delegate adMarvelContainerClosed:self adMarvelView:self.adMarvelView];
+        }
     }
 }
 
