@@ -79,6 +79,9 @@
 }
 
 - (void)refreshAd {
+    if (!self.adMarvelView || ![self enabled]) {
+        return;
+    }
     [self.adController refreshAd];
 }
 
