@@ -56,7 +56,7 @@
 }
 
 - (BOOL)testingEnabled {
-#if defined (DEBUG)
+#if defined (ADMARVEL_TEST_ADS)
     return YES;
 #endif
     return NO;
