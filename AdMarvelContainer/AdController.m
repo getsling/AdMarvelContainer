@@ -103,7 +103,11 @@
 }
 
 - (void)getInterstitialAdSucceeded {
-    [self.adMarvelView displayInterstitial];
+    BOOL success = [self.adMarvelView displayInterstitial];
+    NSLog(@"getInterstitialAdSucceeded, displayed: %i", success);
+    if (!success && self.closedBlock) {
+        self.closedBlock();
+    }
 }
 
 - (void)handleAdMarvelSDKClick:(NSString*)urlString {
