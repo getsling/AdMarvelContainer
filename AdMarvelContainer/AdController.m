@@ -37,6 +37,7 @@
     if (!self.siteId) {
         self.siteId = [Config config].adMarvelSiteId;
     }
+    NSLog(@"Getting intersitial for site id %@", self.siteId);
     [self.adMarvelView getInterstitialAd];
 }
 

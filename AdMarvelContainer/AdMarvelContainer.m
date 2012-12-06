@@ -25,6 +25,20 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedInit];
+    }
+    return self;
+}
+
+- (void)sharedInit {
+    self.hidden = YES;
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"black50"]];
+    self.adController = [[AdController alloc] init];
+}
+
 - (void)setDelegate:(id<AdMarvelContainerDelegate>)delegate {
     _delegate = delegate;
 
@@ -51,23 +65,9 @@
         [closeButton setContentEdgeInsets:UIEdgeInsetsMake(0, 12, 12, 0)];
         [closeButton addTarget:self action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:closeButton];
-
+        
         [self openAd];
     }];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self sharedInit];
-    }
-    return self;
-}
-
-- (void)sharedInit {
-    self.hidden = YES;
-    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"black50"]];
-    self.adController = [[AdController alloc] init];
 }
 
 - (BOOL)enabled {
