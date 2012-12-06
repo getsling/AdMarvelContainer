@@ -63,6 +63,13 @@
     return NO;
 }
 
+- (CGRect)adMarvelViewFrame {
+    if (self.frame.size.width) {
+        return self.frame;
+    }
+    return CGRectMake(0, 0, 320, 50);
+}
+
 - (BOOL)locationServicesEnabled {
     return NO;
 }

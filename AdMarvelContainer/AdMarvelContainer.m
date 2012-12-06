@@ -46,7 +46,14 @@
         self.adController.siteId = [_delegate adMarvelSiteId];
     }
 
+    if ([_delegate respondsToSelector:@selector(adMarvelViewFrame)]) {
+        self.adController.frame = [_delegate adMarvelViewFrame];
+    }
+
     [self.adController getAdWithSuccessBlock:^(AdMarvelView *adMarvelView) {
+        DLog(@"adMarvelView width: %f", adMarvelView.frame.size.width);
+        DLog(@"adMarvelView height: %f", adMarvelView.frame.size.height);
+
         self.adMarvelView = adMarvelView;
 
         CGRect newContainerFrame = self.frame;
