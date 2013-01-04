@@ -22,9 +22,17 @@ The height of the AdMarvelContainer has to be 10 points more then your AdMarvel 
 
 ## Requirements
 * An AdMarvel site id and partner id
+* AdMarvelSDK
 * [RemoteConfig](https://github.com/gangverk/RemoteConfig) (or edit AdController.m and remove `[Config config].adMarvelSiteId` and `[Config config].adMarvelPartnerId`)
 * ARC
 * Xcode 4.4
+
+
+## Installation
+1. Install all frameworks required by AdMarvelSDK via CocoaPods:  
+`pod 'AdMarvelContainer', :git => 'https://github.com/gangverk/AdMarvelContainer.git'`
+2. Download the AdMarvelSDK from AdMarvel, copy it to your project. Ignore any installation instructions from them, don't include frameworks etc.
+3. Copy the files in the AdMarvelContainer folder to your project (git submodule).
 
 
 ## Issues and questions
