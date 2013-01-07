@@ -8,9 +8,52 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/gangverk/AdMarvelContainer.git", :tag => s.version.to_s }
   s.platform     = :ios
   s.requires_arc = true
-  s.xcconfig     = { 'OTHER_LDFLAGS' => '-ObjC -lsqlite3.0 -lstdc++ -lxml2 -lz' }
-  s.frameworks   =  'AdSupport', 'AssetsLibrary', 'AudioToolbox', 'CoreLocation', 'EventKit', 'EventKitUI', 
-                    'Foundation', 'iAd', 'MediaPlayer', 'MessageUI', 'QuartzCore', 'SystemConfiguration', 
-                    'UIKit', 'AVFoundation', 'CFNetwork', 'CoreGraphics', 'CoreMedia', 'CoreMotion', 
-                    'CoreText', 'MobileCoreServices', 'OpenGLES'
+  s.frameworks   = 'AssetsLibrary', 'AudioToolbox', 'CoreLocation', 
+                   'EventKit', 'EventKitUI', 'Foundation', 'iAd', 'MediaPlayer', 
+                   'MessageUI', 'QuartzCore', 'SystemConfiguration', 'UIKit'
+  s.weak_frameworks = 'AdSupport'
+  s.preferred_dependency = 'AdJitsu_GoogleAdMob_Millennial_Rhythm'
+
+  s.subspec 'AdJitsu_GoogleAdMob_Millennial_Rhythm' do |agmr|
+    agmr.dependency 'AdMarvelContainer/AdJitsu'
+    agmr.dependency 'AdMarvelContainer/GoogleAdMob'
+    agmr.dependency 'AdMarvelContainer/Millennial'
+    agmr.dependency 'AdMarvelContainer/Rhythm'
+  end
+
+  s.subspec 'AdColony' do |adcolony|
+    adcolony.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
+    adcolony.frameworks = 'AVFoundation', 'CFNetwork', 'CoreGraphics', 
+                          'CoreMedia', 'CoreTelephony', StoreKit'
+  end
+
+  s.subspec 'AdJitsu' do |adjitsu|
+    adjitsu.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
+    adjitsu.libraries  = 'lsqlite3.0', 'stdc++', 'xml2', 'z'
+    adjitsu.frameworks = 'AVFoundation', 'CFNetwork', 'CoreGraphics', 'CoreMedia', 
+                         'CoreMotion', 'CoreText', 'MobileCoreServices', 'OpenGLES'
+  end
+
+  s.subspec 'Amazon' do |amazon|
+    amazon.frameworks = 'CoreGraphics'
+  end
+
+  s.subspec 'GoogleAdMob' do |googleadMob|
+    googleadMob.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
+    googleadMob.frameworks = 'CoreGraphics'
+  end
+
+  s.subspec 'Medialets' do |medialets|
+    medialets.xcconfig   = { 'OTHER_LDFLAGS' => '-all_load' }
+    medialets.libraries  = 'sqlite3.0', 'z', 'System'
+    medialets.frameworks = 'AddressBook', 'CFNetwork'
+  end
+
+  s.subspec 'Millennial' do |millennial|
+    millennial.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
+    millennial.frameworks = 'AVFoundation', 'CoreGraphics', 'MobileCoreServices'
+  end
+
+  s.subspec 'Rhythm' do |rhythm|
+  end
 end
