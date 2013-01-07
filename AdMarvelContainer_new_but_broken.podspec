@@ -1,7 +1,7 @@
 # BROKEN DUE TO BUG, see https://github.com/CocoaPods/CocoaPods/issues/722
 
 Pod::Spec.new do |s|
-  s.name         = "AdMarvelContainer"
+  s.name         = "AdMarvelContainer_dont_use"
   s.version      = "1.3.1"
   s.summary      = "All required frameworks for AdMarvelSDK."
   s.homepage     = "https://github.com/gangverk/AdMarvelContainer"
