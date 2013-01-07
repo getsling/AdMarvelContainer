@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "AdMarvelContainer"
-  s.version         = "1.3.1"
+  s.version         = "1.3.2"
   s.summary         = "All required frameworks for AdMarvelSDK."
   s.homepage        = "https://github.com/gangverk/AdMarvelContainer"
   s.license         = 'MIT'

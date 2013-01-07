@@ -1,13 +1,12 @@
 # BROKEN DUE TO BUG, see https://github.com/CocoaPods/CocoaPods/issues/722
 
 Pod::Spec.new do |s|
-  s.name         = "AdMarvelContainer_dont_use"
+  s.name         = "AdMarvelContainer_new_but_broken"
   s.version      = "1.3.1"
   s.summary      = "All required frameworks for AdMarvelSDK."
   s.homepage     = "https://github.com/gangverk/AdMarvelContainer"
   s.license      = 'MIT'
   s.author       = { "Kevin Renskers" => "info@mixedcase.nl" }
-  s.source       = { :git => "https://github.com/gangverk/AdMarvelContainer.git", :tag => s.version.to_s }
   s.platform     = :ios
   s.requires_arc = true
   s.frameworks   = 'AssetsLibrary', 'AudioToolbox', 'CoreLocation', 
@@ -17,9 +16,9 @@ Pod::Spec.new do |s|
   s.preferred_dependency = 'AdJitsu_GoogleAdMob_Millennial_Rhythm'
 
   s.subspec 'AdJitsu_GoogleAdMob_Millennial_Rhythm' do |agmr|
-    agmr.dependency 'AdMarvelContainer/AdJitsu'
-    agmr.dependency 'AdMarvelContainer/GoogleAdMob'
-    agmr.dependency 'AdMarvelContainer/Millennial'
+    agmr.dependency 'AdMarvelContainer_new_but_broken/AdJitsu'
+    agmr.dependency 'AdMarvelContainer_new_but_broken/GoogleAdMob'
+    agmr.dependency 'AdMarvelContainer_new_but_broken/Millennial'
   end
 
   s.subspec 'AdColony' do |adcolony|
