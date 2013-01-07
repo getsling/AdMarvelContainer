@@ -18,18 +18,17 @@ Pod::Spec.new do |s|
     agmr.dependency 'AdMarvelContainer/AdJitsu'
     agmr.dependency 'AdMarvelContainer/GoogleAdMob'
     agmr.dependency 'AdMarvelContainer/Millennial'
-    agmr.dependency 'AdMarvelContainer/Rhythm'
   end
 
   s.subspec 'AdColony' do |adcolony|
     adcolony.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
     adcolony.frameworks = 'AVFoundation', 'CFNetwork', 'CoreGraphics', 
-                          'CoreMedia', 'CoreTelephony', StoreKit'
+                          'CoreMedia', 'CoreTelephony', 'StoreKit'
   end
 
   s.subspec 'AdJitsu' do |adjitsu|
     adjitsu.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
-    adjitsu.libraries  = 'lsqlite3.0', 'stdc++', 'xml2', 'z'
+    adjitsu.libraries  = 'sqlite3.0', 'stdc++', 'xml2', 'z'
     adjitsu.frameworks = 'AVFoundation', 'CFNetwork', 'CoreGraphics', 'CoreMedia', 
                          'CoreMotion', 'CoreText', 'MobileCoreServices', 'OpenGLES'
   end
@@ -52,8 +51,5 @@ Pod::Spec.new do |s|
   s.subspec 'Millennial' do |millennial|
     millennial.xcconfig   = { 'OTHER_LDFLAGS' => '-ObjC' }
     millennial.frameworks = 'AVFoundation', 'CoreGraphics', 'MobileCoreServices'
-  end
-
-  s.subspec 'Rhythm' do |rhythm|
   end
 end
