@@ -35,7 +35,6 @@
 
 - (void)sharedInit {
     self.hidden = YES;
-    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"black50"]];
     self.adController = [[AdController alloc] init];
 }
 
@@ -50,26 +49,35 @@
         self.adController.frame = [_delegate adMarvelViewFrame];
     }
 
+    BOOL hasCloseAdButton = YES;
+    if ([_delegate respondsToSelector:@selector(hasCloseAdButton)]) {
+        hasCloseAdButton = [_delegate hasCloseAdButton];
+    }
+
     [self.adController getAdWithSuccessBlock:^(AdMarvelView *adMarvelView) {
         self.adMarvelView = adMarvelView;
 
-        CGRect newContainerFrame = self.frame;
-        newContainerFrame.size.height = adMarvelView.frame.size.height + PADDING_TOP;
-        self.frame = newContainerFrame;
+        if (hasCloseAdButton) {
+            CGRect newContainerFrame = self.frame;
+            newContainerFrame.size.height = adMarvelView.frame.size.height + PADDING_TOP;
+            self.frame = newContainerFrame;
 
-        CGRect newAdMarvelViewFrame = adMarvelView.frame;
-        newAdMarvelViewFrame.origin.y = PADDING_TOP;
-        adMarvelView.frame = newAdMarvelViewFrame;
+            CGRect newAdMarvelViewFrame = adMarvelView.frame;
+            newAdMarvelViewFrame.origin.y = PADDING_TOP;
+            adMarvelView.frame = newAdMarvelViewFrame;
+        }
 
         [self addSubview:adMarvelView];
 
-        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        closeButton.frame = CGRectMake(self.frame.size.width-40, 0, 40, 40);
-        [closeButton setImage:[UIImage imageNamed:@"b_ad_close"] forState:UIControlStateNormal];
-        [closeButton setContentEdgeInsets:UIEdgeInsetsMake(0, 12, 12, 0)];
-        [closeButton addTarget:self action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:closeButton];
-        
+        if (hasCloseAdButton) {
+            UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            closeButton.frame = CGRectMake(self.frame.size.width-40, 0, 40, 40);
+            [closeButton setImage:[UIImage imageNamed:@"b_ad_close"] forState:UIControlStateNormal];
+            [closeButton setContentEdgeInsets:UIEdgeInsetsMake(0, 12, 12, 0)];
+            [closeButton addTarget:self action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:closeButton];
+        }
+
         [self openAd];
     }];
 }
