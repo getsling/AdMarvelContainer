@@ -41,8 +41,9 @@
     [self.adMarvelView getInterstitialAd];
 }
 
-- (void)refreshAd {
-    [self.adMarvelView getAd];
+- (void)refreshAdWithSuccessBlock:(GetAdSuccessBlock)successBlock {
+    self.successBlock = successBlock;
+    [self.adMarvelView getAdWithNotification];
 }
 
 #pragma mark - AdMarvelDelegate
@@ -89,7 +90,9 @@
 }
 
 - (void)getAdSucceeded {
-    self.successBlock(self.adMarvelView);
+    if (self.successBlock) {
+        self.successBlock(self.adMarvelView);
+    }
 }
 
 - (void)getAdFailed {

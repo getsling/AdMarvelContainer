@@ -7,15 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "AdMarvelView.h"
+#import "AdController.h"
 
 @class AdMarvelContainer;
 @protocol AdMarvelContainerDelegate <NSObject>
 
-@required
+@optional
 - (void)adMarvelContainerOpened:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarvelView;
 - (void)adMarvelContainerClosed:(AdMarvelContainer *)adMarvelContainer adMarvelView:(AdMarvelView *)adMarvelView;
-
-@optional
 - (BOOL)adMarvelEnabled;
 - (BOOL)hasCloseAdButton;
 - (NSString *)adMarvelSiteId;
@@ -30,6 +29,7 @@
 
 - (BOOL)enabled;
 - (void)refreshAd;
+- (void)refreshAdWithSuccessBlock:(GetAdSuccessBlock)successBlock;
 - (void)openAd;
 - (void)closeAd;
 

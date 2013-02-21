@@ -21,6 +21,6 @@ typedef void (^InterstitialClosedBlock)();
 
 - (void)getAdWithSuccessBlock:(GetAdSuccessBlock)successBlock;
 - (void)openInterstitialWithClosedBlock:(InterstitialClosedBlock)closedBlock;
-- (void)refreshAd;
+- (void)refreshAdWithSuccessBlock:(GetAdSuccessBlock)successBlock;
 
 @end

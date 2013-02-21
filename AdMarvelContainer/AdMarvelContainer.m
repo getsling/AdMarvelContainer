@@ -6,7 +6,6 @@
 //
 
 #import "AdMarvelContainer.h"
-#import "AdController.h"
 
 #define PADDING_TOP 10
 
@@ -94,7 +93,14 @@
     if (!self.adMarvelView || ![self enabled]) {
         return;
     }
-    [self.adController refreshAd];
+    [self.adController refreshAdWithSuccessBlock:nil];
+}
+
+- (void)refreshAdWithSuccessBlock:(GetAdSuccessBlock)successBlock {
+    if (!self.adMarvelView || ![self enabled]) {
+        return;
+    }
+    [self.adController refreshAdWithSuccessBlock:successBlock];
 }
 
 - (void)openAd {
