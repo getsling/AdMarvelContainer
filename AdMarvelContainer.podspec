@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.requires_arc    = true
   s.xcconfig        = { 'OTHER_LDFLAGS' => '-ObjC' }
   s.libraries       = 'sqlite3.0', 'stdc++', 'xml2', 'z'
-  s.weak_frameworks = 'AdSupport'
+  s.weak_frameworks = 'AdSupport', 'Social', 'StoreKit'
   s.frameworks      =  'AssetsLibrary', 'AudioToolbox', 'CoreLocation', 'EventKit', 'EventKitUI', 
                        'Foundation', 'iAd', 'MediaPlayer', 'MessageUI', 'QuartzCore', 'SystemConfiguration', 
                        'AVFoundation', 'CFNetwork', 'CoreGraphics', 'CoreMedia', 'CoreMotion', 
