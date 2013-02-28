@@ -25,19 +25,31 @@
 
 - (void)getAdWithSuccessBlock:(GetAdSuccessBlock)successBlock {
     self.successBlock = successBlock;
+
     if (!self.siteId) {
         self.siteId = [Config config].adMarvelSiteId;
     }
-    NSLog(@"Getting ad for site id %@", self.siteId);
+
+    if (!self.partnerId) {
+        self.partnerId = [Config config].adMarvelPartnerId;
+    }
+
+    NSLog(@"Getting ad for site id %@, partner id %@", self.siteId, self.partnerId);
     [self.adMarvelView getAdWithNotification];
 }
 
 - (void)openInterstitialWithClosedBlock:(InterstitialClosedBlock)closedBlock {
     self.closedBlock = closedBlock;
+
     if (!self.siteId) {
         self.siteId = [Config config].adMarvelSiteId;
     }
-    NSLog(@"Getting intersitial for site id %@", self.siteId);
+
+    if (!self.partnerId) {
+        self.partnerId = [Config config].adMarvelPartnerId;
+    }
+
+    NSLog(@"Getting intersitial for site id %@, partner id %@", self.siteId, self.partnerId);
     [self.adMarvelView getInterstitialAd];
 }
 
@@ -47,10 +59,6 @@
 }
 
 #pragma mark - AdMarvelDelegate
-
-- (NSString *)partnerId {
-    return [Config config].adMarvelPartnerId;
-}
 
 - (UIViewController *)applicationUIViewController {
     AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];

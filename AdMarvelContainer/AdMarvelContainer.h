@@ -18,6 +18,7 @@
 - (BOOL)adMarvelEnabled;
 - (BOOL)hasCloseAdButton;
 - (NSString *)adMarvelSiteId;
+- (NSString *)adMarvelPartnerId;
 - (CGRect)adMarvelViewFrame;
 
 @end

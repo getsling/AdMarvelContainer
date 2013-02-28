@@ -17,6 +17,7 @@ typedef void (^InterstitialClosedBlock)();
 @interface AdController : NSObject <AdMarvelDelegate>
 
 @property (strong, nonatomic) NSString *siteId;
+@property (strong, nonatomic) NSString *partnerId;
 @property (nonatomic) CGRect frame;
 
 - (void)getAdWithSuccessBlock:(GetAdSuccessBlock)successBlock;

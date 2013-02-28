@@ -44,6 +44,10 @@
         self.adController.siteId = [_delegate adMarvelSiteId];
     }
 
+    if ([_delegate respondsToSelector:@selector(adMarvelPartnerId)]) {
+        self.adController.partnerId = [_delegate adMarvelPartnerId];
+    }
+
     if ([_delegate respondsToSelector:@selector(adMarvelViewFrame)]) {
         self.adController.frame = [_delegate adMarvelViewFrame];
     }
