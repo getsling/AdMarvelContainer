@@ -54,6 +54,7 @@
 }
 
 - (void)refreshAdWithSuccessBlock:(GetAdSuccessBlock)successBlock {
+    NSLog(@"Refreshing ad for site id %@, partner id %@", self.siteId, self.partnerId);
     self.successBlock = successBlock;
     [self.adMarvelView getAdWithNotification];
 }

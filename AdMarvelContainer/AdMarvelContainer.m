@@ -104,6 +104,19 @@
     if (!self.adMarvelView || ![self enabled]) {
         return;
     }
+
+    if ([_delegate respondsToSelector:@selector(adMarvelSiteId)]) {
+        self.adController.siteId = [_delegate adMarvelSiteId];
+    }
+
+    if ([_delegate respondsToSelector:@selector(adMarvelPartnerId)]) {
+        self.adController.partnerId = [_delegate adMarvelPartnerId];
+    }
+
+    if ([_delegate respondsToSelector:@selector(adMarvelViewFrame)]) {
+        self.adController.frame = [_delegate adMarvelViewFrame];
+    }
+
     [self.adController refreshAdWithSuccessBlock:successBlock];
 }
 
