@@ -40,6 +40,10 @@
 - (void)setDelegate:(id<AdMarvelContainerDelegate>)delegate {
     _delegate = delegate;
 
+    if (![self enabled]) {
+        return;
+    }
+
     if ([_delegate respondsToSelector:@selector(adMarvelSiteId)]) {
         self.adController.siteId = [_delegate adMarvelSiteId];
     }
