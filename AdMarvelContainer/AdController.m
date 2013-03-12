@@ -27,11 +27,11 @@
     self.successBlock = successBlock;
 
     if (!self.siteId) {
-        self.siteId = [Config config].adMarvelSiteId;
+        self.siteId = [Config sharedInstance].adMarvelSiteId;
     }
 
     if (!self.partnerId) {
-        self.partnerId = [Config config].adMarvelPartnerId;
+        self.partnerId = [Config sharedInstance].adMarvelPartnerId;
     }
 
     NSLog(@"Getting ad for site id %@, partner id %@", self.siteId, self.partnerId);
@@ -42,11 +42,11 @@
     self.closedBlock = closedBlock;
 
     if (!self.siteId) {
-        self.siteId = [Config config].adMarvelSiteId;
+        self.siteId = [Config sharedInstance].adMarvelSiteId;
     }
 
     if (!self.partnerId) {
-        self.partnerId = [Config config].adMarvelPartnerId;
+        self.partnerId = [Config sharedInstance].adMarvelPartnerId;
     }
 
     NSLog(@"Getting intersitial for site id %@, partner id %@", self.siteId, self.partnerId);
