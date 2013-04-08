@@ -30,7 +30,8 @@ The height of the AdMarvelContainer has to be 10 points more then your AdMarvel 
 
 ## Installation
 1. Install all frameworks required by AdMarvelSDK via CocoaPods:  
-`pod 'AdMarvelContainer', :git => 'https://github.com/gangverk/AdMarvelContainer.git'`
+`pod 'AdMarvelContainer/[GoogleAdMob_Millennial]', :git => 'https://github.com/gangverk/AdMarvelContainer.git'`
+(instead of GoogleAdMob_Millennial you can choose one of the other versions)
 2. Download the AdMarvelSDK from AdMarvel, copy it to your project. Ignore any installation instructions from them, don't include frameworks etc.
 3. Copy the files in the AdMarvelContainer folder to your project (git submodule).
 
