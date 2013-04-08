@@ -23,7 +23,7 @@ The height of the AdMarvelContainer has to be 10 points more then your AdMarvel 
 ## Requirements
 * An AdMarvel site id and partner id
 * AdMarvelSDK
-* [RemoteConfig](https://github.com/gangverk/RemoteConfig) (or edit AdController.m and remove `[Config config].adMarvelSiteId` and `[Config config].adMarvelPartnerId`)
+* [RemoteConfig](https://github.com/gangverk/RemoteConfig) (or edit AdController.m and remove `[Config sharedInstance].adMarvelSiteId` and `[Config sharedInstance].adMarvelPartnerId`)
 * ARC
 * Xcode 4.4
 
