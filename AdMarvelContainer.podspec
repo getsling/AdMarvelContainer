@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
                    'EventKit', 'EventKitUI', 'Foundation', 'iAd', 'MediaPlayer', 
                    'MessageUI', 'QuartzCore', 'SystemConfiguration', 'UIKit'
   s.weak_frameworks = 'AdSupport', 'Accounts', 'Social', 'StoreKit'
-  s.preferred_dependency = 'AdJitsu_GoogleAdMob_Millennial_Rhythm'
+  s.default_subspec = 'AdJitsu_GoogleAdMob_Millennial_Rhythm'
 
   s.subspec 'AdJitsu_GoogleAdMob_Millennial_Rhythm' do |agmr|
     agmr.dependency 'AdMarvelContainer/AdJitsu'
