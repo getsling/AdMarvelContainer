@@ -18,6 +18,7 @@ typedef void (^InterstitialClosedBlock)();
 
 @property (strong, nonatomic) NSString *siteId;
 @property (strong, nonatomic) NSString *partnerId;
+@property (strong, nonatomic) NSDictionary *adMarvelTargetingParameters;
 @property (nonatomic) CGRect frame;
 
 - (void)getAdWithSuccessBlock:(GetAdSuccessBlock)successBlock;

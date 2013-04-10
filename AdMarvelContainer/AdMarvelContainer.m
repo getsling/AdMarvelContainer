@@ -52,6 +52,10 @@
         self.adController.frame = [_delegate adMarvelViewFrame];
     }
 
+    if ([_delegate respondsToSelector:@selector(adMarvelTargetingParameters)]) {
+        self.adController.adMarvelTargetingParameters = [_delegate adMarvelTargetingParameters];
+    }
+
     BOOL hasCloseAdButton = YES;
     if ([_delegate respondsToSelector:@selector(hasCloseAdButton)]) {
         hasCloseAdButton = [_delegate hasCloseAdButton];

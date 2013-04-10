@@ -88,6 +88,10 @@
     return NO;
 }
 
+- (NSDictionary *)targetingParameters {
+	return self.adMarvelTargetingParameters;
+}
+
 #pragma mark Callback methods
 
 - (void)fullScreenWebViewActivated {

@@ -20,6 +20,7 @@
 - (NSString *)adMarvelSiteId;
 - (NSString *)adMarvelPartnerId;
 - (CGRect)adMarvelViewFrame;
+- (NSDictionary *)adMarvelTargetingParameters;
 
 @end
 
