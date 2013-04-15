@@ -109,6 +109,11 @@
         return;
     }
 
+    // Only refresh if there's already an ad
+    if (!self.adMarvelView) {
+        return;
+    }
+
     if ([_delegate respondsToSelector:@selector(adMarvelSiteId)]) {
         self.adController.siteId = [_delegate adMarvelSiteId];
     }
@@ -149,6 +154,10 @@
             [self.delegate adMarvelContainerClosed:self adMarvelView:self.adMarvelView];
         }
     }
+}
+
+- (BOOL)isLoaded {
+    return self.adMarvelView != nil;
 }
 
 @end

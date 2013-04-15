@@ -103,6 +103,7 @@
 }
 
 - (void)getAdSucceeded {
+    NSLog(@"getAdSucceeded");
     if (self.successBlock) {
         self.successBlock(self.adMarvelView);
     }
