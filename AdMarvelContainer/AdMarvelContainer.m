@@ -11,7 +11,7 @@
 
 @interface AdMarvelContainer ()
 @property (strong, nonatomic) AdController *adController;
-@property (strong, nonatomic) AdMarvelView *adMarvelView;
+@property (weak, nonatomic) AdMarvelView *adMarvelView;
 @end
 
 @implementation AdMarvelContainer
@@ -61,31 +61,33 @@
         hasCloseAdButton = [_delegate hasCloseAdButton];
     }
 
+    __weak AdMarvelContainer *weakSelf = self;
+
     [self.adController getAdWithSuccessBlock:^(AdMarvelView *adMarvelView) {
-        self.adMarvelView = adMarvelView;
+        weakSelf.adMarvelView = adMarvelView;
 
         if (hasCloseAdButton) {
-            CGRect newContainerFrame = self.frame;
+            CGRect newContainerFrame = weakSelf.frame;
             newContainerFrame.size.height = adMarvelView.frame.size.height + PADDING_TOP;
-            self.frame = newContainerFrame;
+            weakSelf.frame = newContainerFrame;
 
             CGRect newAdMarvelViewFrame = adMarvelView.frame;
             newAdMarvelViewFrame.origin.y = PADDING_TOP;
             adMarvelView.frame = newAdMarvelViewFrame;
         }
 
-        [self addSubview:adMarvelView];
+        [weakSelf addSubview:adMarvelView];
 
         if (hasCloseAdButton) {
-            UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            closeButton.frame = CGRectMake(self.frame.size.width-40, 0, 40, 40);
+            __weak UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            closeButton.frame = CGRectMake(weakSelf.frame.size.width-40, 0, 40, 40);
             [closeButton setImage:[UIImage imageNamed:@"b_ad_close"] forState:UIControlStateNormal];
             [closeButton setContentEdgeInsets:UIEdgeInsetsMake(0, 12, 12, 0)];
-            [closeButton addTarget:self action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:closeButton];
+            [closeButton addTarget:weakSelf action:@selector(closeAd) forControlEvents:UIControlEventTouchUpInside];
+            [weakSelf addSubview:closeButton];
         }
 
-        [self openAd];
+        [weakSelf openAd];
     }];
 }
 
