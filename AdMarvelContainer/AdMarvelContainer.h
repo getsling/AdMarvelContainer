@@ -27,7 +27,7 @@
 
 @interface AdMarvelContainer : UIView
 
-@property (strong, nonatomic) IBOutlet id <AdMarvelContainerDelegate> delegate;
+@property (weak, nonatomic) IBOutlet id <AdMarvelContainerDelegate> delegate;
 @property (readonly, nonatomic) BOOL isLoaded;
 
 - (BOOL)enabled;
