@@ -1,4 +1,5 @@
 # AdMarvelContainer
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ## Overview
 A more developer-friendly way of working with AdMarvel banners and interstitials. Simply drag an UIView in your nib file, change its class to AdMarvelContainer, set its delegate to the File's Owner and you're done.
